@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { addTodo } from './store/actions';
 import { useDispatch, useSelector } from 'react-redux';
+import {getTodos} from './store/thunks'
 
 function Todo() {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos);
   const todoRef = React.useRef('');
+
+  useEffect(() => {
+    dispatch(getTodos)
+  }, [])
 
   return (
     <>
