@@ -7,7 +7,7 @@ function Todo() {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos);
   const todoRef = React.useRef('');
-
+  
   useEffect(() => {
     dispatch(getTodos)
   }, [])

@@ -1,6 +1,6 @@
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { UPDATE_PASSWORD, UPDATE_LOGIN } from './store/actions'
+import { updateLogin, updatePassword } from './store/loginSlice'
 
 function LoginForm() {
 
@@ -15,7 +15,7 @@ console.log('login ===> ', login)
         placeholder="Enter login"
         value={login}
         onChange={(event) =>
-          dispatch({ type: UPDATE_LOGIN, payload: event.target.value })
+          dispatch(updateLogin(event.target.value))
         }
       />
       <input
@@ -23,7 +23,7 @@ console.log('login ===> ', login)
         placeholder="Enter password"
         value={password}
         onChange={(event) =>
-          dispatch({ type: UPDATE_PASSWORD, payload: event.target.value })
+          dispatch(updatePassword(event.target.value))
         }
       />
       <button>Submit</button>

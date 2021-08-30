@@ -1,9 +1,13 @@
-import {createStore, combineReducers, applyMiddleware} from 'redux'
-import thunk from 'redux-thunk';
-import authReducer from './components/Login/store/reducers'
-import todosReducer from './components/Todo/store/reducers'
+import { configureStore } from '@reduxjs/toolkit'
 
-const reducer = combineReducers({auth: authReducer, todos: todosReducer})
-const store = createStore(reducer,  applyMiddleware(thunk))
+//TODO: what about redux-thunk and rtk
+import authReducer from './components/Login/store/loginSlice'
+import todosReducer from './components/Todo/store/reducers'
+import { pokemonApi } from './services/jokes'
+
+const reducer = {auth: authReducer, todos: todosReducer, [pokemonApi.reducerPath]: pokemonApi.reducer}
+
+// const store = createStore(reducer,  applyMiddleware(thunk))
+const store = configureStore({reducer})
 
 export default store
